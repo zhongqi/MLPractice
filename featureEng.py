@@ -5,7 +5,7 @@ class featureEng:
     def __init__():
         self.loc_database = ""
 
-    def load_data():
+    def get_data():
         pass
 
     def service_features():
