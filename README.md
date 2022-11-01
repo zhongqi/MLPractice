@@ -11,7 +11,6 @@ Data preparation. There are two basic functions:
 1. get data from web and cache locally;
 2. provide a data service interface.
 
-##
 
 ## pipeline
 Use pipeline.py to execute feature-training-inference pipeline
