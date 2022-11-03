@@ -14,3 +14,9 @@ Data preparation. There are two basic functions:
 
 ## pipeline
 Use pipeline.py to execute feature-training-inference pipeline
+A typical ML pipeline includes:
+1. data preparation (dataPre.py)
+2. feature engineering (featureEng.py)
+3. train a ML model (train.py)
+4. make predictions (infer.py)
+In addition, put global parameters in param.py
