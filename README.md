@@ -19,4 +19,5 @@ A typical ML pipeline includes:
 2. feature engineering (featureEng.py)
 3. train a ML model (train.py)
 4. make predictions (infer.py)
+
 In addition, put global parameters in param.py
