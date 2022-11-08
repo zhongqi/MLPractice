@@ -8,11 +8,11 @@ import sqlite3
 import pandas as pd
 import time
 import csv
-
+import tushare
 
 # get data from web and cache locally
 def get_data(compCode):
-    import tushare
+
     tushare.set_token(tushare_token)
 
     conn = sqlite3.connect(loc_db)  # Lixiang's db location: 'D:/PyProjects/TimeSeriesAnaPrj_database/CHN_stock_data.db'
@@ -36,6 +36,25 @@ def get_data(compCode):
 
 # provide a data service interface
 def service_data(compCode):
+    tushare.set_token(tushare_token)
+    conn = sqlite3.connect(loc_db)
+    c = conn.cursor()
+
+    conn.row_factory = sqlite3.Row
+    # where ts_code='600000.SH'
+    c.execute("""
+        SELECT ts_code,trade_date,`open`,high,low,pre_close,change,pct_chg,vol,amount
+        FROM AShareDaily
+        where ts_code=compcode
+        order by trade_date desc
+        """)
+    rows = c.fetchall()
+
     result = {}
-    result[compCode] = []
+    comp_lst = ['', 'trade_date', '`open`', 'high', 'low', 'pre_close', 'change', 'pct_chg', 'vol', 'amount']
+    for i in range(1, len(comp_lst)):
+        for j in range(len(rows)):
+            result.setdefault(comp_lst[i], []).append(rows[j][i])
+
+    # result[compCode] = []
     return json.dumps(result)
