@@ -36,19 +36,20 @@ def get_data(compCode):
 
 # provide a data service interface
 def service_data(compCode):
+    compCode=compCode
     tushare.set_token(tushare_token)
     conn = sqlite3.connect(loc_db)
     c = conn.cursor()
 
     conn.row_factory = sqlite3.Row
     # where ts_code='600000.SH'
-    c.execute("""
+    rows=c.execute("""
         SELECT ts_code,trade_date,`open`,high,low,pre_close,change,pct_chg,vol,amount
         FROM AShareDaily
-        where ts_code=compcode
+        where ts_code='{compCode}'
         order by trade_date desc
         """)
-    rows = c.fetchall()
+
 
     result = {}
     comp_lst = ['', 'trade_date', '`open`', 'high', 'low', 'pre_close', 'change', 'pct_chg', 'vol', 'amount']
