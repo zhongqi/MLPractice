@@ -7,11 +7,12 @@ class featureEng:
         self.loc_database = loc_db
         self.data = self._get_data()
         self.num_features = 1000 #predefined, fill 0 by default
-        self.features = []
+        self.features = [] # e.g. [{'SH600001':100,'SH600002':3},{'SH600001':0.4},{},{},{}]
 
     # load data in memory
     def _get_data():
-        pass
+        # result = service_data(xxxx)
+        # return result
 
     # feature engineering method 1
     def _feature_eng1():
@@ -24,7 +25,7 @@ class featureEng:
         return feature
 
     def feature_eng_all():
-        f1 = self._feature_eng1()
+        f1 = self._feature_eng1() #{'SH600001':100,'SH600002':3}
         self.features.append(f1)
 
         f2 = self._feature_eng2()
