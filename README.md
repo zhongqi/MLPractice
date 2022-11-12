@@ -5,6 +5,7 @@ A ML pipeline to apply time series analysis.
 ### Name
 1. "service_$x" functions provide $x service;
 2. "get_$x" functions collect $x from sources;
+3. "_$x" functions are of private functions which should not be called from externally;
 
 ## dataPre.py
 Data preparation. There are two basic functions: 

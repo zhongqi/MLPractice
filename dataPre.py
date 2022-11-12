@@ -59,3 +59,7 @@ def service_data(compCode):
 
     # result[compCode] = []
     return json.dumps(result)
+
+
+if __name__ == '__main__':
+    print("x")
