@@ -2,6 +2,7 @@
 # 1. get data from web and cache locally
 # 2. provide a data service interface
 import pandas as pd
+from param import raw_data_path, target_component, service_data_path
 
 
 # get data from web and cache locally
@@ -26,3 +27,6 @@ def service_data(service_data_path):
     return result
 
 
+if __name__=="__main__":
+    raw_data = get_data(raw_data_path, service_data_path, component=target_component)
+    print(service_data(service_data_path))
