@@ -3,7 +3,6 @@ from sklearn.preprocessing import MultiLabelBinarizer, OrdinalEncoder, LabelBina
 from sklearn.datasets import load_svmlight_file, dump_svmlight_file
 from sklearn.model_selection import train_test_split
 import pandas as pd
-from param import *
 import dataPre
 
 class FeatureEng:
@@ -60,7 +59,7 @@ class FeatureEng:
         svm_y = self.libsvm_data[1]
         return svm_x, svm_y
 
-    def service_features(self, target='train'):
+    def service_features(self, target='svm_xy'):
         if target == 'libsvm':
             return self.libsvm_data
         elif target == 'csv':
@@ -69,7 +68,8 @@ class FeatureEng:
             return self.x_y_split()
 
 if __name__=="__main__":
-    component_data = dataPre.service_data(service_data_path)
-    feaEng = FeatureEng(component_data, target_component)
-    train_x, train_y = feaEng.service_features()
-    print(train_x)
+    component_data = dataPre.service_data(service_data_path='./data/材料模型_data_test.csv')
+    feaEng = FeatureEng(component_data, '材料模型')
+    svm_x, svm_y = feaEng.service_features()
+    print(svm_x.shape)
+    print(svm_y.shape)
